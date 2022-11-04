@@ -1,6 +1,6 @@
 {
   "name": "@qavajs/steps-files",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "steps to interact with file system",
   "main": "./index.js",
   "scripts": {
@@ -32,6 +32,7 @@
     "ts-node": "^10.9.1"
   },
   "dependencies": {
-    "@qavajs/validation": "^0.0.2"
+    "@qavajs/validation": "^0.0.2",
+    "xlsx": "^0.18.5"
   }
 }

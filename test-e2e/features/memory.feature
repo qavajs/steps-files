@@ -16,3 +16,6 @@ Feature: memory
     When I save 'test-e2e/static-folder/excel.xls' Excel file content as 'excelContent97'
     Then I expect '$excelContent97.Sheets.QAVAJS.A1.v' memory value to be equal 'qavajs'
 
+  Scenario: save as pdf
+    When I save 'test-e2e/static-folder/pdf.pdf' pdf file content as 'pdf'
+    Then I expect '$pdf.textMultiLine' memory value to contain 'This is a header'

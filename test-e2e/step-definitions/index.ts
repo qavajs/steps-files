@@ -17,7 +17,13 @@ When('I drop file {string} to {string} after {int} ms', async function (file, di
 Then('I expect {string} memory value to be equal {string}', async function(actual, expected) {
     const actualValue = memory.getValue(actual);
     const expectedValue = memory.getValue(expected);
-    expect(expectedValue).to.eql(actualValue);
+    expect(actualValue).to.eql(expectedValue);
+});
+
+Then('I expect {string} memory value to contain {string}', async function(actual, expected) {
+    const actualValue = memory.getValue(actual);
+    const expectedValue = memory.getValue(expected);
+    expect(actualValue).to.contain(expectedValue);
 });
 
 After(async function () {

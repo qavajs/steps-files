@@ -2,6 +2,7 @@ import { When } from '@cucumber/cucumber';
 import memory from '@qavajs/memory';
 import fs from 'fs/promises';
 import xlsx from 'xlsx';
+import parsePdf from './pdf';
 
 /**
  * Save file content to memory as buffer
@@ -46,3 +47,17 @@ When('I save {string} Excel file content as {string}', async function (file, mem
     memory.setValue(memoryKey, excelContent);
 });
 
+/**
+ * Save file content to memory as pdf object
+ * @param {string} file - file path
+ * @param {string} memoryKey - memory key
+ * @example
+ * When I save './folder/file.pdf' pdf file content as 'pdfContent'
+ * When I save '$filePath' pdf file content as 'pdfContent'
+ */
+When('I save {string} pdf file content as {string}', async function (file, memoryKey) {
+    const filePath = memory.getValue(file);
+    const fileContent = await fs.readFile(filePath);
+    const pdfData = await parsePdf(fileContent);
+    memory.setValue(memoryKey, pdfData);
+});

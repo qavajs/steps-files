@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@qavajs/validation": "^0.0.2",
+    "pdfjs-dist": "^3.0.279",
     "xlsx": "^0.18.5"
   }
 }

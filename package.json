@@ -1,6 +1,6 @@
 {
   "name": "@qavajs/steps-files",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "steps to interact with file system",
   "main": "./index.js",
   "scripts": {

@@ -5,7 +5,7 @@
   "main": "./index.js",
   "scripts": {
     "build": "tsc",
-    "test:e2e": "ts-node node_modules/.bin/qavajs run --config test-e2e/config.ts"
+    "test:e2e": "npx ts-node --esm node_modules/@qavajs/cli/bin/qavajs.js run --config test-e2e/config.ts"
   },
   "repository": {
     "type": "git",
@@ -20,15 +20,16 @@
   },
   "homepage": "https://github.com/qavajs/steps-files#readme",
   "devDependencies": {
-    "@cucumber/cucumber": "^8.7.0",
-    "@qavajs/cli": "^0.0.11",
-    "@qavajs/xunit-formatter": "^0.0.2",
-    "@types/chai": "^4.3.3",
-    "@types/fs-extra": "^9.0.13",
-    "@types/jest": "^29.1.2",
-    "fs-extra": "^10.1.0",
-    "jest": "^29.2.0",
-    "ts-jest": "^29.0.3",
+    "@cucumber/cucumber": "^8.10.0",
+    "@qavajs/cli": "^0.0.17",
+    "@qavajs/memory": "^1.1.1",
+    "@qavajs/xunit-formatter": "^0.0.3",
+    "@types/chai": "^4.3.4",
+    "@types/fs-extra": "^11.0.1",
+    "@types/jest": "^29.4.0",
+    "fs-extra": "^11.1.0",
+    "jest": "^29.4.1",
+    "ts-jest": "^29.0.5",
     "ts-node": "^10.9.1"
   },
   "dependencies": {

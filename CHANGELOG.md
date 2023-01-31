@@ -1,3 +1,6 @@
+## 0.0.4
+updated canvas implementation to @napi-rs/canvas
+
 ## 0.0.3
 added pdf step
 

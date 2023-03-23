@@ -1,6 +1,3 @@
-import canvas from '@napi-rs/canvas';
-// @ts-ignore alternative implementation of canvas
-globalThis.DOMMatrix = canvas.DOMMatrix;
 import { getDocument, PDFDocumentProxy } from 'pdfjs-dist/legacy/build/pdf';
 import { TextItem } from 'pdfjs-dist/types/src/display/api';
 

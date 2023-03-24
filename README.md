@@ -1,10 +1,10 @@
 # @qavajs/steps-files
 Step library to work with file system
 
-## installation
+## Installation
 `npm install @qavajs/steps-files`
 
-## configuration
+## Configuration
 ```javascript
 module.exports = {
     default: {

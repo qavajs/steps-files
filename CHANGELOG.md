@@ -1,3 +1,6 @@
+## 0.0.5
+rollback adding @napi-rs/canvas
+
 ## 0.0.4
 updated canvas implementation to @napi-rs/canvas
 

@@ -1,3 +1,6 @@
+## 0.0.6
+added capability to save file from buffer
+
 ## 0.0.5
 rollback adding @napi-rs/canvas
 

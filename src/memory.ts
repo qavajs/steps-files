@@ -13,7 +13,7 @@ import parsePdf from './pdf';
  * When I save '$filePath' file content as 'fileContent'
  */
 When('I save {string} file content as {string}', async function (file, memoryKey) {
-    const filePath = memory.getValue(file);
+    const filePath = await memory.getValue(file);
     const fileContent = await fs.readFile(filePath);
     memory.setValue(memoryKey, fileContent);
 });
@@ -27,7 +27,7 @@ When('I save {string} file content as {string}', async function (file, memoryKey
  * When I save '$filePath' text file as 'fileContent'
  */
 When('I save {string} text file content as {string}', async function (file, memoryKey) {
-    const filePath = memory.getValue(file);
+    const filePath = await memory.getValue(file);
     const fileContent = await fs.readFile(filePath, 'utf-8');
     memory.setValue(memoryKey, fileContent);
 });
@@ -39,10 +39,13 @@ When('I save {string} text file content as {string}', async function (file, memo
  * @example
  * When I save './folder/file.xls' Excel file content as 'excelContent'
  * When I save '$filePath' Excel file content as 'excelContent'
+ * When I save '$fileBuffer' Excel file content as 'excelContent'
  */
 When('I save {string} Excel file content as {string}', async function (file, memoryKey) {
-    const filePath = memory.getValue(file);
-    const fileContent = await fs.readFile(filePath);
+    const filePathOrContent = await memory.getValue(file);
+    const fileContent = typeof filePathOrContent === 'string'
+        ? await fs.readFile(filePathOrContent)
+        : filePathOrContent;
     const excelContent = xlsx.read(fileContent);
     memory.setValue(memoryKey, excelContent);
 });
@@ -54,10 +57,13 @@ When('I save {string} Excel file content as {string}', async function (file, mem
  * @example
  * When I save './folder/file.pdf' pdf file content as 'pdfContent'
  * When I save '$filePath' pdf file content as 'pdfContent'
+ * When I save '$fileBuffer' pdf file content as 'pdfContent'
  */
 When('I save {string} pdf file content as {string}', async function (file, memoryKey) {
-    const filePath = memory.getValue(file);
-    const fileContent = await fs.readFile(filePath);
-    const pdfData = await parsePdf(fileContent);
+    const filePathOrContent = await memory.getValue(file);
+    const fileContent = typeof filePathOrContent === 'string'
+        ? await fs.readFile(filePathOrContent)
+        : filePathOrContent;
+    const pdfData = await parsePdf(new Uint8Array(fileContent));
     memory.setValue(memoryKey, pdfData);
 });

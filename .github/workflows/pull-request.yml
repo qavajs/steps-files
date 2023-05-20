@@ -6,30 +6,17 @@ on:
       - main
 
 jobs:
-  unix-node16:
-    runs-on: ubuntu-latest
+  test:
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, windows-latest ]
+        node_version: [ 16, 18 ]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
-      - run: npm ci
-      - run: npm run build
-      - run: npm run test:e2e
-      - name: junit report
-        uses: mikepenz/action-junit-report@v3
-        if: always()
-        with:
-         report_paths: './test-e2e/report.xml'
-         fail_on_failure: true
-
-  windows-node16:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
+          node-version: ${{ matrix.node_version }}
       - run: npm ci
       - run: npm run build
       - run: npm run test:e2e

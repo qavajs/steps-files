@@ -34,3 +34,16 @@ Feature: memory
     When I save 'test-e2e/static-folder/pdf.pdf' file content as 'fileContent'
     When I save '$fileContent' pdf file content as 'pdf'
     Then I expect '$pdf.textMultiLine' memory value to contain 'This is a header'
+
+  Scenario: save as Word
+    When I save 'test-e2e/static-folder/word.docx' Word file content as 'word'
+    Then I expect '$word.textSingleLine' memory value to contain 'Test for qavajs Next line'
+    Then I expect '$word.textMultiLine' memory value to contain 'Test for qavajs'
+    Then I expect '$word.textMultiLine' memory value to contain 'Next line'
+
+  Scenario: save as Word from buffer
+    When I save 'test-e2e/static-folder/word.docx' file content as 'fileContent'
+    When I save '$fileContent' Word file content as 'word'
+    Then I expect '$word.textSingleLine' memory value to contain 'Test for qavajs Next line'
+    Then I expect '$word.textMultiLine' memory value to contain 'Test for qavajs'
+    Then I expect '$word.textMultiLine' memory value to contain 'Next line'

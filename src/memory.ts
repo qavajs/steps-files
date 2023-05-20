@@ -3,6 +3,7 @@ import memory from '@qavajs/memory';
 import fs from 'fs/promises';
 import xlsx from 'xlsx';
 import parsePdf from './pdf';
+import parseDocx from './word';
 
 /**
  * Save file content to memory as buffer
@@ -67,3 +68,22 @@ When('I save {string} pdf file content as {string}', async function (file, memor
     const pdfData = await parsePdf(new Uint8Array(fileContent));
     memory.setValue(memoryKey, pdfData);
 });
+
+/**
+ * Save file content to memory as Word object
+ * @param {string} file - file path
+ * @param {string} memoryKey - memory key
+ * @example
+ * When I save './folder/file.docx' Word file content as 'wordContent'
+ * When I save '$filePath' Word file content as 'wordContent'
+ * When I save '$fileBuffer' Word file content as 'wordContent'
+ */
+When('I save {string} Word file content as {string}', async function (file, memoryKey) {
+    const filePathOrContent = await memory.getValue(file);
+    const fileContent = typeof filePathOrContent === 'string'
+        ? await fs.readFile(filePathOrContent)
+        : filePathOrContent;
+    const pdfData = await parseDocx(fileContent);
+    memory.setValue(memoryKey, pdfData);
+});
+

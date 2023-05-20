@@ -1,3 +1,6 @@
+## 0.0.7
+added steps to parse docx
+
 ## 0.0.6
 added capability to save file from buffer
 

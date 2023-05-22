@@ -1,11 +1,12 @@
 {
   "name": "@qavajs/steps-files",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "steps to interact with file system",
   "main": "./index.js",
   "scripts": {
     "build": "tsc",
-    "test:e2e": "npx ts-node --esm node_modules/@qavajs/cli/bin/qavajs.js run --config test-e2e/config.ts"
+    "test:e2e": "npx ts-node --esm node_modules/@qavajs/cli/bin/qavajs.js run --config test-e2e/config.ts",
+    "debug:e2e": "npx ts-node --esm node_modules/@qavajs/cli/bin/qavajs.js run --config test-e2e/config.ts --tags @debug"
   },
   "repository": {
     "type": "git",
@@ -36,7 +37,8 @@
   },
   "dependencies": {
     "@qavajs/validation": "^0.0.5",
+    "pdfjs-dist": "^3.6.172",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.19.3/xlsx-0.19.3.tgz",
-    "pdfjs-dist": "^3.6.172"
+    "mammoth": "^1.5.1"
   }
 }

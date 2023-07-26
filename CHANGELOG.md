@@ -1,5 +1,6 @@
 ## 0.7.0
-- added steps to parse docx
+- added step to parse docx
+- added step to parse csv
 
 ## 0.0.6
 - added capability to save file from buffer

@@ -47,3 +47,8 @@ Feature: memory
     Then I expect '$word.textSingleLine' memory value to contain 'Test for qavajs Next line'
     Then I expect '$word.textMultiLine' memory value to contain 'Test for qavajs'
     Then I expect '$word.textMultiLine' memory value to contain 'Next line'
+
+  Scenario: save as csv
+    When I save 'test-e2e/static-folder/csv.csv' csv file content as 'csvContent'
+    Then I expect '$csvContent[0].qavajs' memory value to be equal '$js(1)'
+    And I expect '$csvContent[1]["three word column"]' memory value to be equal 'string'

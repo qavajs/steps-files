@@ -1,3 +1,7 @@
+## 0.8.0
+- updated dependencies
+- dropped support of node 16
+
 ## 0.7.0
 - added step to parse docx
 - added step to parse csv

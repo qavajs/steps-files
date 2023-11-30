@@ -1,15 +1,15 @@
-import { getDocument, PDFDocumentProxy } from 'pdfjs-dist/legacy/build/pdf';
-import { TextItem } from 'pdfjs-dist/types/src/display/api';
-
+import { PDFDocumentProxy } from 'pdfjs-dist';
+const pdfJSModule = import('pdfjs-dist');
 /**
  * Parse pdf file buffer
  * @param buffer - file buffer
  * @returns
- * @property {string} textMultiline - text content in multiline format
+ * @property {string} textMultiLine - text content in multiline format
  * @property {string} textSingleLine - text content in single format
  * @property {Object} metadata - file metadata
  */
-export default async function parsePdf(buffer: Uint8Array) {
+export default async function parsePdf(buffer: Uint8Array): Promise<{ textMultiLine: string, textSingleLine: string, metadata: any}> {
+    const { getDocument } = await pdfJSModule;
     const document = await getDocument(buffer).promise;
     return {
         textMultiLine: await getFullText(document, '\n'),
@@ -22,15 +22,15 @@ export default async function parsePdf(buffer: Uint8Array) {
  * Extract pdf text content
  * @param {PDFDocumentProxy} document - document object
  * @param {string} lineDelimiter - lineDelimiter
- * @returns {string} - parsed text content
+ * @returns {Promise<string>} - parsed text content
  */
-async function getFullText(document: PDFDocumentProxy, lineDelimiter: string = '\n') {
+async function getFullText(document: PDFDocumentProxy, lineDelimiter: string = '\n'): Promise<string> {
     let fullText = '';
     for (let i = 0; i < document.numPages; i++) {
         const page = await document.getPage(i + 1);
         const textContent = await page.getTextContent();
         fullText += textContent.items.reduce(([text, y], current) => {
-            const textItem = current as TextItem;
+            const textItem = current as any;
             if (y && textItem.transform[5] !== y) {
                 text += lineDelimiter
             }

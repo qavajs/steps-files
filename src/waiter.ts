@@ -1,8 +1,8 @@
 import { When } from '@cucumber/cucumber';
 import { waitFor } from './waitFor';
 import memory from '@qavajs/memory';
-import fs from 'fs/promises';
-import { constants } from 'fs';
+import fs from 'node:fs/promises';
+import { constants } from 'node:fs';
 
 declare global {
     var config: any;

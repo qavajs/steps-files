@@ -1,6 +1,6 @@
 import { When } from '@cucumber/cucumber';
 import memory from '@qavajs/memory';
-import fs from 'fs/promises';
+import fs from 'node:fs/promises';
 import { getValidation } from '@qavajs/validation';
 
 declare global {

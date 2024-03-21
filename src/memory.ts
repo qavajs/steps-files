@@ -1,6 +1,6 @@
 import { When } from '@cucumber/cucumber';
 import memory from '@qavajs/memory';
-import fs from 'fs/promises';
+import fs from 'node:fs/promises';
 import xlsx from 'xlsx';
 import parsePdf from './pdf';
 import parseDocx from './word';

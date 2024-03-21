@@ -1,3 +1,6 @@
+## 0.9.0
+- updated dependencies
+
 ## 0.8.0
 - updated dependencies
 - dropped support of node 16

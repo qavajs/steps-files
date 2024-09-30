@@ -11,6 +11,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [0.11.0]
 - updated dependencies
+- changed imports to legacy build to support node 18/20
 
 ## [0.10.0]
 Breaking change: moved _@qavajs/validation_ to peer dependencies

@@ -1,5 +1,5 @@
-import { PDFDocumentProxy } from 'pdfjs-dist';
-const pdfJSModule = import('pdfjs-dist');
+import { type PDFDocumentProxy } from 'pdfjs-dist';
+const pdfJSModule = import('pdfjs-dist/legacy/build/pdf.mjs');
 /**
  * Parse pdf file buffer
  * @param buffer - file buffer

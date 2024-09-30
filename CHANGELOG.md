@@ -9,6 +9,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :x: - deprecation
 :pencil: - chore
 
+## [0.11.0]
+- updated dependencies
+
 ## [0.10.0]
 Breaking change: moved _@qavajs/validation_ to peer dependencies
 After update please install latest version of @qavajs/validation package

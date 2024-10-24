@@ -1,16 +1,13 @@
 import { Then, When, After } from '@cucumber/cucumber';
 import memory from '@qavajs/memory';
-import * as fs from 'fs-extra';
 import * as path from 'path';
 import { expect } from 'chai';
-
-declare global {
-    var config: any;
-}
+import {writeFileSync, readdirSync} from "node:fs";
+import {unlinkSync} from "fs-extra";
 
 When('I drop file {string} to {string} after {int} ms', async function (file, dir, delay) {
     setTimeout(() => {
-        fs.writeFileSync(path.join(dir, file), 'content', 'utf-8')
+        writeFileSync(path.join(dir, file), 'content', 'utf-8')
     }, delay);
 });
 
@@ -27,7 +24,8 @@ Then('I expect {string} memory value to contain {string}', async function(actual
 });
 
 After(async function () {
-    fs.emptydirSync('./test-e2e/folder');
+    const dir ='./test-e2e/folder';
+    readdirSync(dir).forEach(f => unlinkSync(`${dir}/${f}`));
 });
 
 

@@ -1,10 +1,10 @@
-import {Then, When, After} from '@cucumber/cucumber';
+import {Then, When, After, Before} from '@cucumber/cucumber';
 import memory from '@qavajs/memory';
 import * as path from 'path';
 import {expect} from 'chai';
 import {writeFileSync, readdirSync, unlinkSync} from "node:fs";
 
-When('I drop file {string} to {string} after {int} ms', async function (file, dir, delay) {
+When('I drop file {string} to {string} after {int} ms', function (file, dir, delay) {
     setTimeout(() => {
         writeFileSync(path.join(dir, file), 'content', 'utf-8')
     }, delay);

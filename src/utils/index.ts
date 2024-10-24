@@ -1,7 +1,7 @@
-import fs from 'node:fs/promises';
+import {readFileSync} from 'node:fs';
 
-export async function getFileContent(filePathOrContent: string | Buffer): Promise<Buffer> {
+export function getFileContent(filePathOrContent: string | Buffer): Buffer {
     return typeof filePathOrContent === 'string'
-        ? await fs.readFile(filePathOrContent)
+        ? readFileSync(filePathOrContent)
         : filePathOrContent;
 }

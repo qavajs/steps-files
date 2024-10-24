@@ -1,25 +1,19 @@
-import { When } from '@cucumber/cucumber';
+import {When} from '@cucumber/cucumber';
 import memory from '@qavajs/memory';
-import fs from 'node:fs/promises';
-import { getValidation } from '@qavajs/validation';
-
-declare global {
-    var config: any;
-}
+import {readFileSync} from "node:fs";
 
 /**
  * Verify that file content satisfy validation
  * @param {string} file - file path
- * @param {string} validationType - validation
+ * @param {string} validation - validation
  * @param {string} expectedValue - expected value
  * @example
  * When I expect './folder/file.txt' text file content to be equal 'file content'
  * When I expect '$filePath' text file content to contain '$content'
  */
-When('I expect {string} text file content {fileValidation} {string}', async function (file, validationType, expectedValue) {
-    const fileName = memory.getValue(file);
+When('I expect {value} text file content {validation} {string}', function (file, validation, expectedValue) {
+    const fileName = memory.getValue(file).value();
     const expected = memory.getValue(expectedValue);
-    const validation = getValidation(validationType);
-    const fileContent = await fs.readFile(fileName, 'utf-8');
+    const fileContent = readFileSync(fileName, 'utf-8');
     validation(fileContent, expected);
 });

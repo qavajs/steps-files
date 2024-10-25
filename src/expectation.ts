@@ -1,7 +1,7 @@
 import {When} from '@cucumber/cucumber';
 import {waitFor} from './waitFor';
-import memory from '@qavajs/memory';
 import {constants, accessSync, readdirSync} from 'node:fs';
+import { MemoryValue } from '@qavajs/core/src/load';
 
 /**
  * Expect file matching regexp to exist directory
@@ -11,9 +11,9 @@ import {constants, accessSync, readdirSync} from 'node:fs';
  * When I expect file matching 'f.+\.txt' regexp exists in './test-e2e/folder'
  * When I expect file matching '$fileRegexp' regexp exists in '$folder'
  */
-When('I expect file matching {string} regexp exists in {string}', async function (file, dir) {
-    const fileNameRegexp = new RegExp(memory.getValue(file));
-    const dirName = memory.getValue(dir);
+When('I expect file matching {value} regexp exists in {value}', async function (file: MemoryValue, dir: MemoryValue) {
+    const fileNameRegexp = new RegExp(await file.value());
+    const dirName = await dir.value();
     await waitFor(function () {
         const fileList = readdirSync(dirName);
         return fileList.find(f => fileNameRegexp.test(f)) ?? false;
@@ -30,8 +30,8 @@ When('I expect file matching {string} regexp exists in {string}', async function
  * When I expect './test-e2e/folder/file.txt' file exists
  * When I expect '$filePath' file exists
  */
-When('I expect {value} file exists', async function (file) {
-    const fileName = memory.getValue(file).value();
+When('I expect {value} file exists', async function (file: MemoryValue) {
+    const fileName = await file.value();
     await waitFor(function () {
         try {
             accessSync(fileName, constants.F_OK);

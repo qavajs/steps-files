@@ -1,6 +1,6 @@
 import {When} from '@cucumber/cucumber';
-import memory from '@qavajs/memory';
 import {readFileSync} from "node:fs";
+import {MemoryValue} from "@qavajs/core/src/load";
 
 /**
  * Verify that file content satisfy validation
@@ -11,9 +11,9 @@ import {readFileSync} from "node:fs";
  * When I expect './folder/file.txt' text file content to be equal 'file content'
  * When I expect '$filePath' text file content to contain '$content'
  */
-When('I expect {value} text file content {validation} {string}', function (file, validation, expectedValue) {
-    const fileName = memory.getValue(file).value();
-    const expected = memory.getValue(expectedValue);
+When('I expect {value} text file content {validation} {value}', async function (file: MemoryValue, validation, expectedValue: MemoryValue) {
+    const fileName = await file.value();
+    const expected = await expectedValue.value();
     const fileContent = readFileSync(fileName, 'utf-8');
     validation(fileContent, expected);
 });

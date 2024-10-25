@@ -1,10 +1,10 @@
 import {When} from '@cucumber/cucumber';
-import memory from '@qavajs/memory';
 import {readFileSync} from 'node:fs';
 import xlsx from 'xlsx';
 import parsePdf from './pdf';
 import parseDocx from './word';
 import {getFileContent} from './utils';
+import {MemoryValue} from "@qavajs/core/src/load";
 
 /**
  * Save file content to memory as buffer
@@ -14,8 +14,8 @@ import {getFileContent} from './utils';
  * When I save './folder/file.txt' file content as 'fileContent'
  * When I save '$filePath' file content as 'fileContent'
  */
-When('I save {value} file content as {value}', function (file, memoryKey) {
-    const filePath = memory.getValue(file).value();
+When('I save {value} file content as {value}', async function (file: MemoryValue, memoryKey: MemoryValue) {
+    const filePath = await file.value();
     const fileContent = readFileSync(filePath);
     memoryKey.set(fileContent);
 });
@@ -28,8 +28,8 @@ When('I save {value} file content as {value}', function (file, memoryKey) {
  * When I save './folder/file.txt' text file content as 'fileContent'
  * When I save '$filePath' text file as 'fileContent'
  */
-When('I save {value} text file content as {value}', function (file, memoryKey) {
-    const filePath = memory.getValue(file).value();
+When('I save {value} text file content as {value}', async function (file: MemoryValue, memoryKey: MemoryValue) {
+    const filePath = await file.value();
     const fileContent = readFileSync(filePath, 'utf-8');
     memoryKey.set(fileContent);
 });
@@ -43,8 +43,8 @@ When('I save {value} text file content as {value}', function (file, memoryKey) {
  * When I save '$filePath' Excel file content as 'excelContent'
  * When I save '$fileBuffer' Excel file content as 'excelContent'
  */
-When('I save {value} Excel file content as {value}', function (file, memoryKey) {
-    const filePathOrContent = memory.getValue(file).value();
+When('I save {value} Excel file content as {value}', async function (file: MemoryValue, memoryKey: MemoryValue) {
+    const filePathOrContent = await file.value();
     const fileContent = getFileContent(filePathOrContent);
     const excelContent = xlsx.read(fileContent);
     memoryKey.set(excelContent);
@@ -59,8 +59,8 @@ When('I save {value} Excel file content as {value}', function (file, memoryKey) 
  * When I save '$filePath' pdf file content as 'pdfContent'
  * When I save '$fileBuffer' pdf file content as 'pdfContent'
  */
-When('I save {value} pdf file content as {value}', async function (file, memoryKey) {
-    const filePathOrContent = memory.getValue(file).value();
+When('I save {value} pdf file content as {value}', async function (file: MemoryValue, memoryKey: MemoryValue) {
+    const filePathOrContent = await file.value();
     const fileContent = getFileContent(filePathOrContent);
     const pdfData = await parsePdf(new Uint8Array(fileContent));
     memoryKey.set(pdfData);
@@ -75,11 +75,11 @@ When('I save {value} pdf file content as {value}', async function (file, memoryK
  * When I save '$filePath' Word file content as 'wordContent'
  * When I save '$fileBuffer' Word file content as 'wordContent'
  */
-When('I save {value} Word file content as {string}', async function (file, memoryKey) {
-    const filePathOrContent = memory.getValue(file).value();
+When('I save {value} Word file content as {value}', async function (file: MemoryValue, memoryKey: MemoryValue) {
+    const filePathOrContent = await file.value();
     const fileContent = getFileContent(filePathOrContent);
     const pdfData = await parseDocx(fileContent);
-    memory.setValue(memoryKey, pdfData);
+    memoryKey.set(pdfData);
 });
 
 /**
@@ -92,8 +92,8 @@ When('I save {value} Word file content as {string}', async function (file, memor
  * When I save '$filePath' csv file content as 'excelContent'
  * When I save '$fileBuffer' csv file content as 'excelContent'
  */
-When('I save {value} csv file content as {value}', function (file, memoryKey) {
-    const filePathOrContent = memory.getValue(file).value();
+When('I save {value} csv file content as {value}', async function (file: MemoryValue, memoryKey: MemoryValue) {
+    const filePathOrContent = await file.value();
     const fileContent = getFileContent(filePathOrContent);
     const excelContent = xlsx.read(fileContent);
     memoryKey.set(xlsx.utils.sheet_to_json(excelContent.Sheets.Sheet1));

@@ -1,10 +1,10 @@
-import {When} from '@cucumber/cucumber';
-import {readFileSync} from 'node:fs';
+import { When } from '@cucumber/cucumber';
+import { readFileSync } from 'node:fs';
 import xlsx from 'xlsx';
 import parsePdf from './pdf';
 import parseDocx from './word';
-import {getFileContent} from './utils';
-import {MemoryValue} from "@qavajs/core/src/load";
+import { getFileContent } from './utils';
+import { MemoryValue } from "@qavajs/core";
 
 /**
  * Save file content to memory as buffer

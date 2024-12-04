@@ -5,9 +5,15 @@ All notable changes to the "@qavajs/steps-files" will be documented in this file
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 :rocket: - new feature
+
 :beetle: - bugfix
+
 :x: - deprecation
+
 :pencil: - chore
+
+## [2.0.1]
+- :beetle: fixed index import issue
 
 ## [2.0.0]
 - migrated to @qavajs/core v2

@@ -9,6 +9,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :x: - deprecation
 :pencil: - chore
 
+## [2.0.0]
+- migrated to @qavajs/core v2
+
 ## [0.11.0]
 - updated dependencies
 - changed imports to legacy build to support node 18/20

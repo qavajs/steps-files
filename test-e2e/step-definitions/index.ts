@@ -1,34 +1,29 @@
-import { Then, When, After } from '@cucumber/cucumber';
+import {Then, When, After, Before} from '@cucumber/cucumber';
 import memory from '@qavajs/memory';
-import * as fs from 'fs-extra';
 import * as path from 'path';
-import { expect } from 'chai';
+import {expect} from 'chai';
+import {writeFileSync, existsSync, readdirSync, unlinkSync, mkdirSync} from "node:fs";
 
-declare global {
-    var config: any;
-}
-
-When('I drop file {string} to {string} after {int} ms', async function (file, dir, delay) {
+When('I drop file {string} to {string} after {int} ms', function (file, dir, delay) {
     setTimeout(() => {
-        fs.writeFileSync(path.join(dir, file), 'content', 'utf-8')
+        existsSync(dir) || mkdirSync(dir);
+        writeFileSync(path.join(dir, file), 'content', 'utf-8')
     }, delay);
 });
 
-Then('I expect {string} memory value to be equal {string}', async function(actual, expected) {
+Then('I expect {string} memory value to be equal {string}', function (actual, expected) {
     const actualValue = memory.getValue(actual);
     const expectedValue = memory.getValue(expected);
     expect(actualValue).to.eql(expectedValue);
 });
 
-Then('I expect {string} memory value to contain {string}', async function(actual, expected) {
+Then('I expect {string} memory value to contain {string}', function (actual, expected) {
     const actualValue = memory.getValue(actual);
     const expectedValue = memory.getValue(expected);
     expect(actualValue).to.contain(expectedValue);
 });
 
-After(async function () {
-    fs.emptydirSync('./test-e2e/folder');
+After(function () {
+    const dir = './test-e2e/folder';
+    readdirSync(dir).forEach(f => unlinkSync(`${dir}/${f}`));
 });
-
-
-

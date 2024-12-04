@@ -1,8 +1,7 @@
 import { When } from '@cucumber/cucumber';
-import { readFileSync } from 'node:fs';
 import { MemoryValue } from '@qavajs/core';
 import { waitFor } from './waitFor';
-import { constants, accessSync, readdirSync } from 'node:fs';
+import { constants, accessSync, readdirSync, readFileSync } from 'node:fs';
 
 /**
  * Verify that file content satisfy validation

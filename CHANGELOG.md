@@ -4,13 +4,14 @@ All notable changes to the "@qavajs/steps-files" will be documented in this file
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-:rocket: - new feature
+:rocket: - new feature  
+:beetle: - bugfix  
+:x: - deprecation/removal  
+:pencil: - chore  
+:microscope: - experimental
 
-:beetle: - bugfix
-
-:x: - deprecation
-
-:pencil: - chore
+## [unreleased]
+- :beetle: fixed publishing workflow
 
 ## [2.0.1]
 - :beetle: fixed index import issue

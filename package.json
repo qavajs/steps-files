@@ -1,6 +1,6 @@
 {
   "name": "@qavajs/steps-files",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "steps to interact with file system",
   "main": "./index.js",
   "scripts": {
@@ -23,11 +23,11 @@
   },
   "homepage": "https://github.com/qavajs/steps-files#readme",
   "devDependencies": {
-    "@cucumber/cucumber": "^11.1.0",
-    "@qavajs/core": "^2.1.1",
+    "@cucumber/cucumber": "^11.2.0",
+    "@qavajs/core": "^2.3.0",
     "@qavajs/console-formatter": "^0.8.0",
     "@qavajs/memory": "^1.10.2",
-    "@qavajs/validation": "^0.10.0",
+    "@qavajs/validation": "^1.1.0",
     "@types/chai": "^4.3.20",
     "@types/jest": "^29.5.14",
     "jest": "^29.7.0",
@@ -35,8 +35,8 @@
     "ts-node": "^10.9.2"
   },
   "dependencies": {
-    "pdfjs-dist": "4.6.82",
+    "pdfjs-dist": "4.10.38",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz",
-    "mammoth": "^1.8.0"
+    "mammoth": "^1.9.0"
   }
 }

@@ -5,6 +5,7 @@ Feature: expect
 
   Scenario: expect file
     When I expect './test-e2e/folder/file.txt' file exists
+
   Scenario: wait for file matching regexp in folder
     When I expect file matching 'f.+\.txt' regexp exists in './test-e2e/folder'
 

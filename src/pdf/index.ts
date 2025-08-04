@@ -1,5 +1,5 @@
 import { type PDFDocumentProxy } from 'pdfjs-dist';
-const pdfJSModule = import('pdfjs-dist/legacy/build/pdf.mjs');
+const pdfJSModule = () => import('pdfjs-dist/legacy/build/pdf.mjs');
 /**
  * Parse pdf file buffer
  * @param buffer - file buffer
@@ -8,8 +8,8 @@ const pdfJSModule = import('pdfjs-dist/legacy/build/pdf.mjs');
  * @property {string} textSingleLine - text content in single format
  * @property {Object} metadata - file metadata
  */
-export default async function parsePdf(buffer: Uint8Array): Promise<{ textMultiLine: string, textSingleLine: string, metadata: any}> {
-    const { getDocument } = await pdfJSModule;
+export default async function parsePdf(buffer: Uint8Array): Promise<{ textMultiLine: string, textSingleLine: string, metadata: any }> {
+    const { getDocument } = await pdfJSModule();
     const document = await getDocument(buffer).promise;
     return {
         textMultiLine: await getFullText(document, '\n'),

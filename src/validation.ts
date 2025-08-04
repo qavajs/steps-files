@@ -1,5 +1,4 @@
-import { When } from '@cucumber/cucumber';
-import { MemoryValue } from '@qavajs/core';
+import { When, MemoryValue } from '@qavajs/core';
 import { waitFor } from './waitFor';
 import { constants, accessSync, readdirSync, readFileSync } from 'node:fs';
 

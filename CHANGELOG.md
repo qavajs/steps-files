@@ -10,6 +10,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 :pencil: - chore  
 :microscope: - experimental
 
+## [2.1.1]
+- :rocket: added lazy pdf-dist library loader
+
 ## [2.1.0]
 - :beetle: fixed publishing workflow
 - :rocket: added source maps

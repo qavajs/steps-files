@@ -1,10 +1,9 @@
-import { When } from '@cucumber/cucumber';
 import { readFileSync } from 'node:fs';
 import xlsx from 'xlsx';
 import parsePdf from './pdf';
 import parseDocx from './word';
 import { getFileContent } from './utils';
-import { MemoryValue } from "@qavajs/core";
+import { When, MemoryValue } from '@qavajs/core';
 
 /**
  * Save file content to memory as buffer
@@ -88,7 +87,7 @@ When('I save {value} Word file content as {value}', async function (file: Memory
  * @param {string} file - file path or file buffer
  * @param {string} memoryKey - memory key
  * @example
- * When I save './folder/file.xls' csv file content as 'excelContent'
+ * When I save './folder/file.csv' csv file content as 'excelContent'
  * When I save '$filePath' csv file content as 'excelContent'
  * When I save '$fileBuffer' csv file content as 'excelContent'
  */

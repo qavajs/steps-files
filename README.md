@@ -2,7 +2,9 @@
 Step library to work with file system
 
 ## Installation
-`npm install @qavajs/steps-files`
+```
+npm install @qavajs/steps-files
+```
 
 ## Configuration
 ```typescript

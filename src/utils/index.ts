@@ -1,4 +1,4 @@
-import {readFileSync} from 'node:fs';
+import { readFileSync } from 'node:fs';
 
 export function getFileContent(filePathOrContent: string | Buffer): Buffer {
     return typeof filePathOrContent === 'string'

@@ -17,11 +17,5 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "declaration": true
-  },
-  "ts-node": {
-    "swc": true,
-    "compilerOptions": {
-      "target": "es2022"
-    }
   }
 }

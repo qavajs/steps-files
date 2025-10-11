@@ -23,20 +23,19 @@
   },
   "homepage": "https://github.com/qavajs/steps-files#readme",
   "devDependencies": {
-    "@cucumber/cucumber": "^12.1.0",
-    "@qavajs/core": "^2.5.2",
-    "@qavajs/console-formatter": "^1.0.0",
-    "@qavajs/memory": "^1.10.2",
-    "@qavajs/validation": "^1.2.1",
-    "@types/chai": "^4.3.20",
+    "@cucumber/cucumber": "^12.2.0",
+    "@qavajs/core": "^2.10.0",
+    "@qavajs/console-formatter": "^1.1.1",
+    "@qavajs/memory": "^1.10.3",
+    "@qavajs/validation": "^1.4.1",
     "@types/jest": "^30.0.0",
-    "jest": "^30.0.5",
-    "ts-jest": "^29.4.1",
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.5",
     "ts-node": "^10.9.2"
   },
   "dependencies": {
-    "pdfjs-dist": "5.4.54",
+    "pdfjs-dist": "5.4.296",
     "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz",
-    "mammoth": "^1.10.0"
+    "mammoth": "^1.11.0"
   }
 }

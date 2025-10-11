@@ -1,26 +1,26 @@
-import {Then, When, After, Before} from '@cucumber/cucumber';
+import { Then, When, After } from '@cucumber/cucumber';
 import memory from '@qavajs/memory';
-import * as path from 'path';
-import {expect} from 'chai';
-import {writeFileSync, existsSync, readdirSync, unlinkSync, mkdirSync} from "node:fs";
+import { join } from 'node:path';
+import { expect } from '@qavajs/validation';
+import { writeFileSync, existsSync, readdirSync, unlinkSync, mkdirSync } from "node:fs";
 
 When('I drop file {string} to {string} after {int} ms', function (file, dir, delay) {
     setTimeout(() => {
         existsSync(dir) || mkdirSync(dir);
-        writeFileSync(path.join(dir, file), 'content', 'utf-8')
+        writeFileSync(join(dir, file), 'content', 'utf-8')
     }, delay);
 });
 
 Then('I expect {string} memory value to be equal {string}', function (actual, expected) {
     const actualValue = memory.getValue(actual);
     const expectedValue = memory.getValue(expected);
-    expect(actualValue).to.eql(expectedValue);
+    expect(actualValue).toDeepEqual(expectedValue);
 });
 
 Then('I expect {string} memory value to contain {string}', function (actual, expected) {
     const actualValue = memory.getValue(actual);
     const expectedValue = memory.getValue(expected);
-    expect(actualValue).to.contain(expectedValue);
+    expect(actualValue).toContain(expectedValue);
 });
 
 After(function () {

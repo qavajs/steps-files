@@ -7,7 +7,7 @@ export default {
         'src/*.ts'
     ],
     format: [
-        'junit:test-e2e/report.xml',
+        ['junit', 'test-e2e/report.xml'],
         '@qavajs/console-formatter'
     ],
     memory: new Memory(),

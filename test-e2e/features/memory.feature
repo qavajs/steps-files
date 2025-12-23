@@ -2,7 +2,7 @@ Feature: memory
 
   Scenario: save as buffer
     When I save 'test-e2e/static-folder/someTextFile.txt' file content as 'fileContent'
-    Then I expect '$fileContent' memory value to be equal '$buffer'
+    Then I expect '$fileContent' memory value to deeply equal '$buffer'
 
   Scenario: save as text
     When I save 'test-e2e/static-folder/someTextFile.txt' text file content as 'fileContent'

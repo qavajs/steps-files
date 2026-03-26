@@ -2,7 +2,7 @@ import { Then, When, After } from '@cucumber/cucumber';
 import memory from '@qavajs/memory';
 import * as fs from 'fs-extra';
 import * as path from 'path';
-import { expect } from 'chai';
+import { expect } from '@qavajs/validation';
 
 declare global {
     var config: any;
@@ -17,13 +17,13 @@ When('I drop file {string} to {string} after {int} ms', async function (file, di
 Then('I expect {string} memory value to be equal {string}', async function(actual, expected) {
     const actualValue = memory.getValue(actual);
     const expectedValue = memory.getValue(expected);
-    expect(actualValue).to.eql(expectedValue);
+    expect(actualValue).toDeepEqual(expectedValue);
 });
 
 Then('I expect {string} memory value to contain {string}', async function(actual, expected) {
     const actualValue = memory.getValue(actual);
     const expectedValue = memory.getValue(expected);
-    expect(actualValue).to.contain(expectedValue);
+    expect(actualValue).toContain(expectedValue);
 });
 
 After(async function () {
